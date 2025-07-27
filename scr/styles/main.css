@@ -1,0 +1,193 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Unbounded', sans-serif;
+  color: #f1f1f1;
+  background: url('../images/mundo-invertido.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  backdrop-filter: brightness(0.4) blur(1px);
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 50px crimson;
+  border-bottom: 2px solid crimson;
+  position: relative;
+  z-index: 10; /* Para ficar acima da rotação */
+}
+
+.logo {
+  width: 80em;
+  margin-bottom: 12px;
+  animation: flutuar 2s ease-in-out infinite alternate;
+}
+
+h1 {
+  font-size: 3rem;
+  color: crimson;
+  text-shadow: 0 0 15px crimson, 0 0 30px black;
+  letter-spacing: 3px;
+}
+
+/* Botão de tema */
+#toggleTheme {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  color: crimson;
+  cursor: pointer;
+  z-index: 20;
+  transition: color 0.3s ease;
+}
+
+#toggleTheme:hover {
+  color: #ff5555;
+}
+
+/* Container */
+.container {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: rgba(10, 10, 10, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 0 40px #000;
+  border: 1px solid crimson;
+  transition: transform 0.8s ease;
+}
+
+/* Aqui a classe que inverte tudo dentro da container */
+.container.inverted {
+  transform: rotate(180deg);
+}
+
+/* Seções */
+h2 {
+  font-size: 2.5rem;
+  color: #ff4444;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+/* Para o texto não ficar de ponta cabeça dentro da rotação */
+.container.inverted h2,
+.container.inverted p,
+.container.inverted h3,
+.container.inverted footer p {
+  transform: rotate(180deg);
+}
+
+p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #e5e5e5;
+  line-height: 1.7;
+}
+
+/* Imagem da seção sobre */
+.sobre img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  border-radius: 15px;
+  box-shadow: 0 0 25px black;
+  filter: grayscale(60%) brightness(0.7);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  background-color: rgba(25, 0, 0, 0.8);
+  padding: 20px;
+  width: 300px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #ff0000;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gira o card inteiro e gira o conteúdo de volta para normal */
+.container.inverted .card {
+  transform: rotate(180deg);
+}
+
+.container.inverted .card > * {
+  transform: rotate(180deg);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px crimson;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  filter: grayscale(70%) brightness(0.8);
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  color: crimson;
+  text-shadow: 0 0 10px red;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  text-align: center;
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  border-top: 1px solid crimson;
+  transition: transform 0.8s ease;
+}
+
+/* Faz o texto do footer ficar normal ao inverter */
+.container.inverted footer {
+  transform: rotate(180deg);
+}
+
+.container.inverted footer p {
+  transform: rotate(180deg);
+}
+
+/* Animação */
+@keyframes flutuar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
